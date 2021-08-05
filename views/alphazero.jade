@@ -1,0 +1,74 @@
+extends layout
+
+block content
+  div.container
+    div.row
+      div(class="col-lg-12 col-md-12")
+        div.sticky
+          br
+          br
+          h2(class="text-center") 
+            strong Alphazero's MCTS Algorithm
+          br
+          br
+          div(id="carouselExampleControls" class="carousel" data-bs-ride="carousel" data-bs-interval="false" data-bs-wrap="false" style="max-width:120vh")
+            div(class="carousel-inner")
+              div(class="carousel-item active")
+                div.row
+                  div(class="col-md-4 col-lg-3 bg-dark side-caption")
+                    h3 Step 0 of AlphaZero MCTS (Selection)
+                    p Select a leaf of the tree. right now, the tree only has one node (the root), so the root is chosen by default.
+                  div.col
+                    img(src="images/top-mcts-0.png" class="d-block w-100" alt="image_1")
+              div(class="carousel-item")
+                div.row
+                  div(class="col-md-4 col-lg-3 bg-dark side-caption")
+                    h3 Step 1 of AlphaZero MCTS (Expansion and Evaluation)
+                    span Next, determine "next moves" from the selected leaf. Use 
+                    span(class="vocab") Alphazero's neural network 
+                    span to calculate a probability distribution over next moves.
+                  div.col
+                    img(src="images/top-mcts-1.png" class="d-block w-100" alt="image_1")
+              div(class="carousel-item")
+                div.row
+                  div(class="col-md-4 col-lg-3 bg-dark side-caption")
+                    h3 Step 2 of AlphaZero MCTS (Backpropagation)
+                    p Use the neural network to estimate the #[span(class="vocab") reward] at the selected leaf. Add the reward, and add one to the number of visits, for all parents in the tree.
+                  div.col
+                    img(src="images/top-mcts-2.png" class="d-block w-100" alt="image_2")
+            button(class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev")
+              span(class="carousel-control-prev-icon" aria-hidden="true")
+              span(class="visually-hidden") Previous
+            button(class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next")
+              span(class="carousel-control-next-icon" aria-hidden="true")
+              span(class="visually-hidden") Next
+          h5(class="text-center") 
+            strong Vocabulary
+          p #[a(href="") Visits]
+          p #[a(href="") Rewards]
+          p #[a(href="") Policy Estimate]
+          p #[a(href="") Value Estimate]
+          p #[a(href="") MCTS]
+          p #[a(href="") UCT Formula]
+          p #[a(href="") Steps of MCTS]
+          //p #[b Rewards] are the MCTS's estimate for the payoffs a player gets if the MCTS's simulated games are actually played out.
+          //p The #[b policy network] takes as input a board state, and outputs a probability distribution over what moves to take.
+          //p The #[b value network] takes as input a board state, and outputs the chances of a given player winning.
+          //strong Formulas
+          //br
+          //img(src="images/mcts-uct.png" class="fit" style="width:200%")
+          //br
+          //br
+
+      //- div.col
+        br
+        // Attempt 1: trying to use Slides straight-out.
+        h3 Alphazero MCTS Step-by-Step Explained
+        h5 Step 1
+        p This is step 1 in detail.
+        h5 Step 2
+        p This is step 2 in detail.
+        h5 Step 3
+        p This is step 3 in detail.
+        h5 Step 4
+        p This is step 4 in detail.
