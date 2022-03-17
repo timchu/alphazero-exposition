@@ -3,45 +3,110 @@ extends layout
 block content
   div.container
     div.row
-      div(class="col-lg-12 col-md-12")
+      div(class="col-lg-10 col-md-12")
         div.sticky
           br
           br
           h2(class="text-center") 
-            strong Alphazero's MCTS Algorithm
+            strong Alphazero's MCTS Algorithm In Action
           br
           br
+          //p In the example below, we show the first 8 steps of the algorithm of the MCTS algorithm for a simple game of tic-tac-toe.
           div(id="carouselExampleControls" class="carousel" data-bs-ride="carousel" data-bs-interval="false" data-bs-wrap="false" style="max-width:120vh")
             div(class="carousel-inner")
+
               div(class="carousel-item active")
                 div.row
-                  div(class="col-md-4 col-lg-3 bg-dark side-caption")
-                    h3 Step 0 of AlphaZero MCTS (Selection)
-                    p Select a leaf of the tree. right now, the tree only has one node (the root), so the root is chosen by default.
+                  div(class="col-md-5 col-lg-4 bg-dark side-caption")
+                    h3 Initial Ingredients
+                    p 1. A tree with one node, representing the current state of the game.
+                    p 2. A neural network, whose input is game state and output is a #[span.vocab policy] and #[span.vocab evalulation.]
                   div.col
                     img(src="images/top-mcts-0.png" class="d-block w-100" alt="image_1")
+
               div(class="carousel-item")
                 div.row
-                  div(class="col-md-4 col-lg-3 bg-dark side-caption")
-                    h3 Step 1 of AlphaZero MCTS (Expansion and Evaluation)
-                    span Next, determine "next moves" from the selected leaf. Use 
-                    span(class="vocab") Alphazero's neural network 
-                    span to calculate a probability distribution over next moves.
+                  div(class="col-md-5 col-lg-4 bg-dark side-caption")
+                    h3 Step 1: Selection
+                    p Select a leaf of the tree by using a #[span.vocab magic formula].
+                    p Initially, the tree only has one leaf (the root). In this case, the root is selected by default.
+                  div.col
+                    img(src="images/top-mcts-0.png" class="d-block w-100" alt="image_1")
+
+              div(class="carousel-item")
+                div.row
+                  div(class="col-md-5 col-lg-4 bg-dark side-caption")
+                    h3 Step 2: Expansion
+                    p Add all "next moves" from the selected leaf, as children of the leaf. 
+                    p In this example, we only show three of the "next moves".
                   div.col
                     img(src="images/top-mcts-1.png" class="d-block w-100" alt="image_1")
+
               div(class="carousel-item")
                 div.row
-                  div(class="col-md-4 col-lg-3 bg-dark side-caption")
-                    h3 Step 2 of AlphaZero MCTS (Backpropagation)
-                    p Use the neural network to estimate the #[span(class="vocab") reward] at the selected leaf. Add the reward, and add one to the number of visits, for all parents in the tree.
+                  div(class="col-md-5 col-lg-4 bg-dark side-caption")
+                    h3 Step 3: Evaluation
+                    p  Use #[span.vocab Alphazeros neural network] to evaluate a probabillity distribution over next moves. This probability distribution is called the #[span.vocab policy].
+                    p This distribution will be useful in future rounds of #[span.vocab selection].
                   div.col
-                    img(src="images/top-mcts-2.png" class="d-block w-100" alt="image_2")
+                    img(src="images/top-mcts-1-nn.png" class="d-block w-100" alt="image_1")
+
+              div(class="carousel-item")
+                div.row
+                  div(class="col-md-5 col-lg-4 bg-dark side-caption")
+                    h3 Step 4: Backup
+                    p For the selected leaf and all its #[span.vocab] ancestors, update the #[span.vocab rewards], and increment the #[span.vocab visit number] by one.
+                    p In the example where the root is the selected leaf, there are no ancestors. 
+                  div.col
+                    img(src="images/top-mcts-1-nn.png" class="d-block w-100" alt="image_2")
+
+              div(class="carousel-item")
+                div.row
+                  div(class="col-md-5 col-lg-4 bg-dark side-caption")
+                    h3 Step 5: Selection (again)
+                  div.col
+                    img(src="images/top-mcts-1-nn.png" class="d-block w-100" alt="image_2")
+              div(class="carousel-item")
+                div.row
+                  div(class="col-md-5 col-lg-4 bg-dark side-caption")
+                    h3 Step 6: Expansion (again)
+                  div.col
+                    img(src="images/top-mcts-2-nn.png" class="d-block w-100" alt="image_2")
+              div(class="carousel-item")
+                div.row
+                  div(class="col-md-5 col-lg-4 bg-dark side-caption")
+                    h3 Step 7: Evaluation (again)
+                  div.col
+                    img(src="images/top-mcts-2-nn.png" class="d-block w-100" alt="image_2")
+              div(class="carousel-item")
+                div.row
+                  div(class="col-md-5 col-lg-4 bg-dark side-caption")
+                    h3 Step 8: Backup (again)
+                  div.col
+                    img(src="images/top-mcts-2-nn.png" class="d-block w-100" alt="image_2")
+
             button(class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev")
               span(class="carousel-control-prev-icon" aria-hidden="true")
               span(class="visually-hidden") Previous
             button(class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next")
               span(class="carousel-control-next-icon" aria-hidden="true")
               span(class="visually-hidden") Next
+          br
+          p In this interactive slideshow above, we show the four steps of Alphazero's MCTS: #[strong Selection, Expansion, Evaluation, and Backup.] These four steps are repeated until ???
+          p The goal of MCTS is to decide upon the Alphazero's next move.
+          //- 
+            h4 Alphazero's MCTS consists of four steps:
+            span &nbsp &nbsp 1. Selection
+            br
+            span &nbsp &nbsp 2. Expansion
+            br
+            span &nbsp &nbsp 3. Evalulation
+            br
+            span &nbsp &nbsp 4. Backup
+            br
+            span &nbsp &nbsp Repeat steps 1-4 until (???)
+            br
+            br
           h5(class="text-center") 
             strong Vocabulary
           p #[a(href="") Visits]
